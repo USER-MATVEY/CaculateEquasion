@@ -11,4 +11,6 @@ class ActivityState(
     var LastFirstOperand: Int,
     var LastSecondOperand: Int,
     var LastOperation: String,
+    var StartButtonState: Boolean,
+    var EquationColor: Int
 ): Parcelable

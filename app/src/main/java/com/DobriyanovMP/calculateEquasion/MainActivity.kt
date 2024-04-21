@@ -2,7 +2,6 @@ package com.DobriyanovMP.calculateEquasion
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.core.view.isVisible
 import com.DobriyanovMP.calculateEquasion.databinding.ActivityMainBinding
 import kotlin.math.round
 import kotlin.random.Random
@@ -32,7 +31,9 @@ class MainActivity : AppCompatActivity() {
             WrongEquationsCount = 0,
             LastFirstOperand = 0,
             LastSecondOperand = 0,
-            LastOperation = "+"
+            LastOperation = "+",
+            StartButtonState = true,
+            EquationColor = getColor(R.color.white)
         )
 
         equationsCount = state.AllEquationsCount
@@ -41,6 +42,8 @@ class MainActivity : AppCompatActivity() {
         firstOperand = state.LastFirstOperand
         secondOperand = state.LastSecondOperand
         operation = state.LastOperation
+        binding.StartButton.isEnabled = state.StartButtonState
+        binding.EquasionLayout.setBackgroundColor(state.EquationColor)
 
         SetEquation()
         binding.AllEqScoreField.text = equationsCount.toString()
@@ -51,9 +54,6 @@ class MainActivity : AppCompatActivity() {
 
         binding.StartButton.setOnClickListener { Start() }
         binding.CheckButton.setOnClickListener { CheckEquation() }
-        binding.NextButton.setOnClickListener { CreateEquation() }
-
-
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -62,8 +62,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun Start() {
-        binding.StartButton.isVisible = false
-        binding.NextButton.isVisible = true
+        binding.StartButton.isEnabled = false
+        state.StartButtonState = false
         CreateEquation()
     }
 
@@ -86,7 +86,7 @@ class MainActivity : AppCompatActivity() {
             while (firstOperand % secondOperand != 0){
                 firstOperand = Random.nextInt(1, 100)
                 secondOperand = Random.nextInt(1, 100)
-                if (firstOperand > secondOperand){
+                if (firstOperand < secondOperand){
                     tmp = firstOperand
                     firstOperand = secondOperand
                     secondOperand = tmp
@@ -107,10 +107,12 @@ class MainActivity : AppCompatActivity() {
     private fun CheckEquation(){
         if (binding.AnswerField.text.toString() == answer.toString()){
             binding.EquasionLayout.setBackgroundColor(getColor(R.color.green))
+            state.EquationColor = getColor(R.color.green)
             correctAnswers += 1
         }
         else {
             binding.EquasionLayout.setBackgroundColor(getColor(R.color.red))
+            state.EquationColor = getColor(R.color.red)
             wrongAnswers += 1
         }
         equationsCount += 1

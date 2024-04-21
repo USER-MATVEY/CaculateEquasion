@@ -14,7 +14,7 @@
         android:textSize="30sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="25dp"
         android:layout_marginTop="25dp"
         />
 
@@ -25,8 +25,8 @@
         android:text="0"
         android:textSize="30sp"
         app:layout_constraintTop_toBottomOf="@id/AllEqText"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/AllEqText"
+        app:layout_constraintEnd_toEndOf="@id/AllEqText"
         android:layout_marginTop="10dp"
         />
 
@@ -36,9 +36,9 @@
         android:layout_height="wrap_content"
         android:text="Правильно"
         android:textSize="25sp"
-        app:layout_constraintTop_toBottomOf="@+id/AllEqScoreField"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/AllWrongText"
+        app:layout_constraintTop_toBottomOf="@id/AllEqScoreField"
+        app:layout_constraintStart_toStartOf="@id/AllEqText"
+        app:layout_constraintEnd_toStartOf="@id/AllWrongText"
         android:layout_marginTop="10dp"
         />
 
@@ -49,8 +49,8 @@
         android:text="Неправильно"
         android:textSize="25sp"
         app:layout_constraintTop_toBottomOf="@id/AllEqScoreField"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/AllCorrectText"
+        app:layout_constraintEnd_toEndOf="@id/AllEqText"
+        app:layout_constraintStart_toEndOf="@id/AllCorrectText"
         android:layout_marginTop="10dp"
         />
 
@@ -84,20 +84,24 @@
         android:layout_height="wrap_content"
         android:text="0.00%"
         android:textSize="50sp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/AllEqScoreField"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/AllCorrectScoreField"
-        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="200dp"
         />
 
     <LinearLayout
         android:id="@+id/EquasionLayout"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
         android:gravity="center_horizontal"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/PercentScore">
+        app:layout_constraintTop_toBottomOf="@id/PercentScore"
+        app:layout_constraintStart_toEndOf="@id/AllWrongText"
+        android:layout_marginStart="115dp"
+        >
 
         <TextView
             android:id="@+id/Operand1"
