@@ -10,7 +10,7 @@
         android:id="@+id/AllEqText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Итого решено примеров"
+        android:text="@string/equationText"
         android:textSize="30sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +22,7 @@
         android:id="@+id/AllEqScoreField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0"
+        android:text="@string/zeoForScors"
         android:textSize="30sp"
         app:layout_constraintTop_toBottomOf="@id/AllEqText"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,7 +34,7 @@
         android:id="@+id/AllCorrectText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Правильно"
+        android:text="@string/correctText"
         android:textSize="25sp"
         app:layout_constraintTop_toBottomOf="@+id/AllEqScoreField"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,7 +46,7 @@
         android:id="@+id/AllWrongText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Неправильно"
+        android:text="@string/wrongText"
         android:textSize="25sp"
         app:layout_constraintTop_toBottomOf="@id/AllEqScoreField"
         app:layout_constraintEnd_toEndOf="parent"
@@ -58,7 +58,7 @@
         android:id="@+id/AllCorrectScoreField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0"
+        android:text="@string/zeoForScors"
         android:textSize="25sp"
         app:layout_constraintTop_toBottomOf="@id/AllCorrectText"
         app:layout_constraintStart_toStartOf="@id/AllCorrectText"
@@ -70,7 +70,7 @@
         android:id="@+id/AllWrongScoreField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0"
+        android:text="@string/zeoForScors"
         android:textSize="25sp"
         app:layout_constraintTop_toBottomOf="@id/AllWrongText"
         app:layout_constraintEnd_toEndOf="@id/AllWrongText"
@@ -82,7 +82,7 @@
         android:id="@+id/PercentScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0.00%"
+        android:text="@string/zeroPercents"
         android:textSize="50sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -103,43 +103,45 @@
             android:id="@+id/Operand1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="00"
+            android:text="@string/tmpOperand1"
             android:textSize="40sp" />
 
         <TextView
             android:id="@+id/Operation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="+"
+            android:text="@string/tmpOperation"
             android:textSize="40sp" />
 
         <TextView
             android:id="@+id/Operand2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="00"
+            android:text="@string/tmpOperand1"
             android:textSize="40sp" />
 
         <TextView
             android:id="@+id/equals"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="="
+            android:text="@string/equalitiCharacter"
             android:textSize="40sp" />
 
         <EditText
             android:id="@+id/AnswerField"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="00"
-            android:textSize="40sp" />
+            android:hint="@string/typiHint"
+            android:textSize="40sp"
+            android:autofillHints="answer Here"
+            android:inputType="number" />
     </LinearLayout>
 
     <Button
         android:id="@+id/CheckButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Проверка"
+        android:text="@string/CheckText"
         android:textAllCaps="true"
         android:textSize="25sp"
         app:layout_constraintTop_toBottomOf="@id/EquasionLayout"
@@ -150,7 +152,7 @@
         android:id="@+id/StartButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Начать"
+        android:text="@string/StartText"
         android:textAllCaps="true"
         android:textSize="25sp"
         app:layout_constraintTop_toBottomOf="@id/CheckButton"

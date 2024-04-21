@@ -7,17 +7,17 @@ import kotlin.math.round
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
-    lateinit var binding: ActivityMainBinding
-    lateinit var state: ActivityState
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var state: ActivityState
 
-    var firstOperand = 10
-    var secondOperand = 20
-    var operation = "-"
-    var equationsCount = 20
-    var correctAnswers = 10
-    var wrongAnswers = 20
-    var percentOfCorrect = 100.0
-    var answer = 0
+    private var firstOperand = 10
+    private var secondOperand = 20
+    private var operation = "-"
+    private var equationsCount = 20
+    private var correctAnswers = 10
+    private var wrongAnswers = 20
+    private var percentOfCorrect = 100.0
+    private var answer = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,34 +26,34 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         state = savedInstanceState?.getParcelable("activityState")?: ActivityState(
-            AllEquationsCount = 0,
-            CorrectEquationsCount = 0,
-            WrongEquationsCount = 0,
-            LastFirstOperand = 0,
-            LastSecondOperand = 0,
-            LastOperation = "+",
-            StartButtonState = true,
-            EquationColor = getColor(R.color.white)
+            allEquationsCount = 0,
+            correctEquationsCount = 0,
+            wrongEquationsCount = 0,
+            lastFirstOperand = 0,
+            lastSecondOperand = 0,
+            lastOperation = "+",
+            startButtonState = true,
+            equationColor = getColor(R.color.white)
         )
 
-        equationsCount = state.AllEquationsCount
-        correctAnswers = state.CorrectEquationsCount
-        wrongAnswers = state.WrongEquationsCount
-        firstOperand = state.LastFirstOperand
-        secondOperand = state.LastSecondOperand
-        operation = state.LastOperation
-        binding.StartButton.isEnabled = state.StartButtonState
-        binding.EquasionLayout.setBackgroundColor(state.EquationColor)
+        equationsCount = state.allEquationsCount
+        correctAnswers = state.correctEquationsCount
+        wrongAnswers = state.wrongEquationsCount
+        firstOperand = state.lastFirstOperand
+        secondOperand = state.lastSecondOperand
+        operation = state.lastOperation
+        binding.StartButton.isEnabled = state.startButtonState
+        binding.EquasionLayout.setBackgroundColor(state.equationColor)
 
-        SetEquation()
+        setEquation()
         binding.AllEqScoreField.text = equationsCount.toString()
         binding.AllCorrectScoreField.text = correctAnswers.toString()
         binding.AllWrongScoreField.text = wrongAnswers.toString()
-        binding.PercentScore.text = percentOfCorrect.toString() + "%"
+        binding.PercentScore.text = "$percentOfCorrect%"
 
 
-        binding.StartButton.setOnClickListener { Start() }
-        binding.CheckButton.setOnClickListener { CheckEquation() }
+        binding.StartButton.setOnClickListener { start() }
+        binding.CheckButton.setOnClickListener { checkEquation() }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -61,13 +61,13 @@ class MainActivity : AppCompatActivity() {
         outState.putParcelable("activityState", state)
     }
 
-    private fun Start() {
+    private fun start() {
         binding.StartButton.isEnabled = false
-        state.StartButtonState = false
-        CreateEquation()
+        state.startButtonState = false
+        createEquation()
     }
 
-    private fun CreateEquation() {
+    private fun createEquation() {
         var tmp: Int
 
         val newOperation = Random.nextInt(1, 5)
@@ -101,18 +101,18 @@ class MainActivity : AppCompatActivity() {
             4 -> answer = firstOperand / secondOperand
         }
 
-        SetEquation()
+        setEquation()
     }
 
-    private fun CheckEquation(){
+    private fun checkEquation(){
         if (binding.AnswerField.text.toString() == answer.toString()){
             binding.EquasionLayout.setBackgroundColor(getColor(R.color.green))
-            state.EquationColor = getColor(R.color.green)
+            state.equationColor = getColor(R.color.green)
             correctAnswers += 1
         }
         else {
             binding.EquasionLayout.setBackgroundColor(getColor(R.color.red))
-            state.EquationColor = getColor(R.color.red)
+            state.equationColor = getColor(R.color.red)
             wrongAnswers += 1
         }
         equationsCount += 1
@@ -121,21 +121,21 @@ class MainActivity : AppCompatActivity() {
         binding.AllEqScoreField.text = equationsCount.toString()
         binding.AllCorrectScoreField.text = correctAnswers.toString()
         binding.AllWrongScoreField.text = wrongAnswers.toString()
-        binding.PercentScore.text = percentOfCorrect.toString() + "%"
+        binding.PercentScore.text = "$percentOfCorrect%"
 
-        CreateEquation()
+        createEquation()
     }
 
-    private fun SetEquation() {
+    private fun setEquation() {
         binding.Operand1.text = firstOperand.toString()
         binding.Operand2.text = secondOperand.toString()
         binding.Operation.text = operation
 
-        state.LastFirstOperand = firstOperand
-        state.LastSecondOperand = secondOperand
-        state.LastOperation = operation
-        state.AllEquationsCount = equationsCount
-        state.CorrectEquationsCount = correctAnswers
-        state.WrongEquationsCount = wrongAnswers
+        state.lastFirstOperand = firstOperand
+        state.lastSecondOperand = secondOperand
+        state.lastOperation = operation
+        state.allEquationsCount = equationsCount
+        state.correctEquationsCount = correctAnswers
+        state.wrongEquationsCount = wrongAnswers
     }
 }

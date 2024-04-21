@@ -5,12 +5,12 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 class ActivityState(
-    var AllEquationsCount: Int,
-    var CorrectEquationsCount : Int,
-    var WrongEquationsCount: Int,
-    var LastFirstOperand: Int,
-    var LastSecondOperand: Int,
-    var LastOperation: String,
-    var StartButtonState: Boolean,
-    var EquationColor: Int
+    var allEquationsCount: Int,
+    var correctEquationsCount : Int,
+    var wrongEquationsCount: Int,
+    var lastFirstOperand: Int,
+    var lastSecondOperand: Int,
+    var lastOperation: String,
+    var startButtonState: Boolean,
+    var equationColor: Int
 ): Parcelable
