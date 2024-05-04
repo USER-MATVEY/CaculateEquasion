@@ -138,7 +138,9 @@
             android:hint="@string/typiHint"
             android:textSize="40sp"
             android:autofillHints="answer Here"
-            android:inputType="number" />
+            android:inputType="number"
+            android:digits="-1234567890"
+            />
     </LinearLayout>
 
     <Button

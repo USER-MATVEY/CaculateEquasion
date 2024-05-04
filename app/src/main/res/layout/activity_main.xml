@@ -131,10 +131,11 @@
             android:id="@+id/AnswerField"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/typiHint"
-            android:textSize="40sp"
             android:autofillHints="answer Here"
-            android:inputType="number" />
+            android:hint="@string/typiHint"
+            android:inputType="number"
+            android:digits="-1234567890"
+            android:textSize="40sp" />
     </LinearLayout>
 
     <Button
